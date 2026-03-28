@@ -68,6 +68,43 @@ class Grid{
         }
 };
 
+
+// Making the Robot and initalzing its postion 
+class Robot{
+    public:
+    // Placing robot at 0,0
+        int map_row = 0;
+        int map_col = 9;
+
+        char up = 'V';
+        char down = 'V';
+        char right = 'V';
+        char left = 'V';
+
+        // Stores the address of the grid 
+        Grid& grid;
+
+        Robot(Grid& g): grid(g){}
+        
+        void location_fetcher(void){
+            cout<<"The location of the robot is "<<map_row<<" , "<<map_col<<endl;
+            cout<<"And the staus is "<<grid.arr[map_row][map_col]<<endl;
+        }
+
+        void getNeighbour(void){
+            
+            if (map_row > 0)  up = grid.arr[map_row - 1][map_col]; 
+            if (map_row < 9)  down = grid.arr[map_row +1][map_col];
+            if (map_col > 0)  left = grid.arr[map_row][map_col - 1];
+            if (map_col < 9)  right = grid.arr[map_row][map_col + 1]; 
+            
+            
+            cout<<up<<endl<<down<<endl<<right<<endl<<left<<endl;
+
+        }
+        
+};
+
 int main(){
   
   return 0;
