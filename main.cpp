@@ -105,6 +105,80 @@ class Robot{
         
 };
 
+class BFS : public Grid{
+    public:
+        queue<pair<int,int>> q;
+        
+        // This is going to store the data if the cells are Visited or not and by default , all are set to zero
+        bool visited[10][10] = {false};
+        int parentRow[10][10];      // This is going to store the Row of the previos cell form which it came 
+        int parentCol[10][10];      // same , stores col of previous cell and there will be a whole matrix for one cordinat (col here)
+        // current row and col of the cell 
+        
+
+        void pathFind(void){
+            q.push({0,0});
+            visited[0][0] = true;
+            int r , c;
+
+            while (!q.empty())
+            {
+                r = q.front().first;
+                c = q.front().second; 
+                q.pop();
+                if (arr[r][c] == 'E')
+                {
+                    break;
+                }
+                
+                
+                if (r-1 >= 0 && arr[r-1][c] != 'X' && visited[r-1][c] == false)  // up
+                { 
+                    visited[r-1][c] = true;
+                    parentRow[r-1][c] = r;
+                    parentCol[r-1][c] = c;
+                    q.push({r-1,c}); 
+                    // We do not do this by ourself that to move it harcoded way as BFS does the thing by iteself , not
+                    // in predefined or our hadcoded way like this 
+                    //r = r-1;
+                }
+                if (r+1 <= 9 && arr[r+1][c] != 'X' && visited[r+1][c] == false){    // down
+                    visited[r+1][c] = true;
+                    parentRow[r+1][c] = r;
+                    parentCol[r+1][c] = c;
+                    q.push({r+1,c}); 
+                }
+                if (c+1 <= 9 && arr[r][c+1] != 'X' && visited[r][c+1] == false){      // right 
+                    visited[r][c+1] = true;
+                    parentRow[r][c+1] = r;
+                    parentCol[r][c+1] = c;
+                    q.push({r,c+1});
+                } 
+                if (c-1 >= 0 && arr[r][c-1] != 'X' && visited[r][c-1] == false){        // left
+                    visited[r][c-1] = true;
+                    parentRow[r][c-1] = r;
+                    parentCol[r][c-1] = c;
+                    q.push({r,c-1});
+                }
+                
+            }
+            
+        }
+        void tracePath(void){
+        int r = 9, c = 9;   // start from E
+    
+        while (r != 0 || c != 0){
+            arr[r][c] = '*';         // mark as path
+            int pr = parentRow[r][c];
+            int pc = parentCol[r][c];
+            r = pr;
+            c = pc;
+        }
+        arr[0][0] = 'S';    // keep S visible
+        arr[9][9] = 'E';    // keep E visible
+        }
+};
+
 int main(){
   
   return 0;
