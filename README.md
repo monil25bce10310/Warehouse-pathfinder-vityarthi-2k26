@@ -61,6 +61,10 @@ BFS explores the grid level by level from the start. It keeps track of which cel
 g++ main.cpp -o warehouse
 ./warehouse
 ```
+---
+
+## Output 
+![Screenshot](https://github.com/monil25bce10310/Warehouse-pathfinder-vityarthi-2k26/blob/main/output%20screenshot/screenshot.pdf)
 
 ---
 
