@@ -180,6 +180,19 @@ class BFS : public Grid{
 };
 
 int main(){
-  
+    cout<<"\n\n\n\n\n\n\n\n\n\n\n\n////////////////// Ware house path-finder\n\n\n ====================================\n\nA robot in storage facility is going to find a way out of this maze"<<endl;
+    cout<<"This is hardcoded map but it can be customized also according to the layout of the building"<<endl;
+    cout<<"\n\n\n\n Starting process......"<<endl<<endl;
+    cout<<"\n\nMap layout\n\n\n";
+    BFS bfs;
+    bfs.girdSetup();
+    bfs.gridDisplay();
+    cout<<"\n\n\n============================================\n\n\n";
+    cout << "Finding path...\n\n";
+    bfs.pathFind();
+    bfs.tracePath();
+    bfs.gridDisplay();
+    cout<<"\n\n\nPath found sucessfully !!\n\n";
+    cout<<"Terminating process.........\n\nThank You !\n\n\n\n\n";
   return 0;
 }
